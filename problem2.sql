@@ -13,13 +13,9 @@ WHERE S.ShipperID = 1;
 
 --SOLUTION: 54
 
--- What is the last name of the employee with the most orders?
-/* Query uses the concept of subquery to extract the EmployeeID with maximum
-orders from the Orders table. This is used to obtain the LastName from the
-Employees table. Subqueries are usually slow and instead a CTE or Windows Functions can 
-also be used to obtain the same as in solution 2  */
 
---Solution 1
+/* This query uses the concept of subquery to extract a EmployeeID from
+Orders table with maximum order using which we obtain the value of the LastName */
 
 SELECT LastName 
 FROM Employees
@@ -29,15 +25,6 @@ WHERE EmployeeID = (
     GROUP BY EmployeeID
     ORDER BY Count(OrderID) DESC
     LIMIT 1);
-
---Solution 2
-
-SELECT LastName
-
-
-
-
-
 
 --SOLUTION: Peacock
 
@@ -63,6 +50,6 @@ FROM (
     GROUP BY t.Country, t.ProductID
     HAVING t.Country = "Germany" ) 
 ORDER BY Total_Quantity DESC
-LIMIT 1
+LIMIT 1;
 
 --SOLUTION: Boston Crab Meat
