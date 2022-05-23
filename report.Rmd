@@ -5,7 +5,6 @@ date: "2022-05-22"
 output: 
   bookdown::html_document2: default
   bookdown::pdf_document2: default
-bibliography: proposal_ref.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -45,7 +44,7 @@ The second question was solved online on w3 schools webpage and the answers alon
 #| echo=FALSE, 
 #| out.width = '100%',
 #| fig.cap="Project pipeline graphic outlining data science approach that will be taken between May - June 2022. *LDA refers to Latent Allocation model that will be applied to perform topic modelling."
-knitr::include_graphics("img/project_pipeline.png")
+knitr::include_graphics("results/shopify_data_challenge.png")
 ```
 
 
@@ -79,23 +78,21 @@ The method employed would be correct if there were no outliers in the data or if
  method_1 <- read_csv("results/method_1.csv") |>
   suppressMessages()
 kable(method_1, 
-      caption = "Calculate the mean of price per unit", 
-      align = "ll") |> kable_styling(font_size = 13)
+      caption = "Calculate the mean of price per unit") |> kable_styling(font_size = 13) 
 ```
 
 However, let us proceed with further analysis to find if our method is infact valid.
 
 Let us obtain the statistics of price per unit, order amount and total items
 
-```{r Method-1, echo=FALSE}
+```{r order_amt, echo=FALSE}
  order_amt <- read_csv("results/order_amt.csv") |>
   suppressMessages()
 kable(order_amt, 
-      caption = "Statistics of Order Amount", 
-      align = "ll") |> kable_styling(font_size = 13)
+      caption = "Statistics of Order Amount") |> kable_styling(font_size = 13)
 ```
 
-```{r Method-1, echo=FALSE}
+```{r price_per_unit, echo=FALSE}
  price_per_unit <- read_csv("results/price_per_unit.csv") |>
   suppressMessages()
 kable(price_per_unit, 
@@ -103,7 +100,7 @@ kable(price_per_unit,
       align = "ll") |> kable_styling(font_size = 13)
 ```
 
-```{r Method-1, echo=FALSE}
+```{r total_items, echo=FALSE}
  total_items <- read_csv("results/total_times.csv") |>
   suppressMessages()
 kable(total_items, 
@@ -115,7 +112,7 @@ As shown in Table \@ref(tab:order_amt), \@ref(tab:price_per_unit), \@ref(tab:tot
 
 Further investigation shows that, there are 46 orders where each pair of shoes costs $ 25725 corresponding to shop with shop id 42 and 17 instances with 2000 items in each order corresponding to the shop with shop id 78. We should focus on these two cases to arrive at a solid conclusion.
 
-```{r Method-1, echo=FALSE}
+```{r grouped, echo=FALSE}
  grouped <- read_csv("results/grouped.csv") |>
   suppressMessages()
 kable(method_1, 
@@ -145,7 +142,7 @@ Since the presence of the outliers has been detected, we can treat them by remov
 ## Method-2
 ### Remove the outliers and calculate
 
-```{r Method-1, echo=FALSE}
+```{r final_csv, echo=FALSE}
 final_csv <- read_csv("results/final.csv") |>
   suppressMessages()
 kable(method_1, 
@@ -169,8 +166,3 @@ The fact that the methods involved in collecting the data made it difficult to d
 During the course of this project, we will be applying these data science approaches while being
 mindful of the limitations as stated above. Project updates will be communicated during scheduled meetings with the 
 project partner for further clarification and improvements. 
-
-<br>
-
-
-# References{#reference}
